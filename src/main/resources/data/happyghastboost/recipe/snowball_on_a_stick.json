@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "minecraft:snowball"
+  },
+  "result": {
+    "id": "happyghastboost:snowball_on_a_stick",
+    "count": 1
+  }
+}

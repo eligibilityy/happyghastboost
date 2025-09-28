@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "happyghastboost",
+  "version": "${version}",
+  "name": "happyghastboost",
+  "description": "Adds a snowball on a stick so you can speed up while riding a Happy Ghast",
+  "authors": ["yiliya"],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/happyghastboost/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "yiliya.happyghastboost.client.HappyghastboostClient"
+    ],
+    "main": [
+      "yiliya.happyghastboost.Happyghastboost"
+    ]
+  },
+  "mixins": [
+    "happyghastboost.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
