@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "yiliya.happyghastboost.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "HappyGhastMovementMixin",
+    "HappyGhastEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
