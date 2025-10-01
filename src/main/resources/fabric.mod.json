@@ -6,7 +6,7 @@
   "description": "Adds a snowball on a stick so you can speed up while riding a Happy Ghast",
   "authors": ["yiliya"],
   "contact": {},
-  "license": "GPL-3.0",
+  "license": "MIT",
   "icon": "assets/happyghastboost/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -23,6 +23,6 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": ">=1.21.6 <1.22"
+    "minecraft": ">=1.21.6 <=1.21.8"
   }
 }
