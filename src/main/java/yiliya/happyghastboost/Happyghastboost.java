@@ -20,7 +20,7 @@ public class Happyghastboost implements ModInitializer {
         SNOWBALL_ON_A_STICK = Items.register(
                 RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "snowball_on_a_stick")),
                 SnowballOnAStickItem::new,
-                new Item.Settings().maxDamage(100)
+                new Item.Settings().maxDamage(50)
         );
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->

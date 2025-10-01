@@ -21,12 +21,33 @@ public class SnowballOnAStickItem extends Item {
         }
 
         boolean isInHand = slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND;
+        boolean isRidingHappyGhast = player.hasVehicle() && player.getVehicle() instanceof HappyGhastEntity;
 
-        if (isInHand && player.hasVehicle() && player.getVehicle() instanceof HappyGhastEntity) {
-            // Consume 1 durability every second (20 ticks)
-            if (world.getTime() % 20 == 0) {
+        if (isInHand && isRidingHappyGhast) {
+            if (world.getTime() % 80 == 0) {
                 if (stack.getDamage() < stack.getMaxDamage()) {
+                    // Damage the item
                     stack.damage(1, player, slot);
+
+                    // Only heal if the Happy Ghast is actually damaged
+                    net.minecraft.entity.passive.HappyGhastEntity happyGhast =
+                            (net.minecraft.entity.passive.HappyGhastEntity) player.getVehicle();
+
+                    if (happyGhast.getHealth() < happyGhast.getMaxHealth()) {
+                        happyGhast.heal(1.0f);
+
+                        if (world.getRandom().nextFloat() < 0.3f) { // 30% chance for particles
+                            world.spawnParticles(
+                                    net.minecraft.particle.ParticleTypes.HAPPY_VILLAGER,
+                                    happyGhast.getX(),
+                                    happyGhast.getY() + 1.5,
+                                    happyGhast.getZ(),
+                                    1,
+                                    0.3, 0.3, 0.3,
+                                    0.05
+                            );
+                        }
+                    }
                 }
             }
         }
