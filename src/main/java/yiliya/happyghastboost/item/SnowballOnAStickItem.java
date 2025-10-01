@@ -16,37 +16,23 @@ public class SnowballOnAStickItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, EquipmentSlot slot) {
-        if (!(entity instanceof PlayerEntity player)) {
-            return;
-        }
+        if (!(entity instanceof PlayerEntity player)) return;
 
         boolean isInHand = slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND;
         boolean isRidingHappyGhast = player.hasVehicle() && player.getVehicle() instanceof HappyGhastEntity;
 
         if (isInHand && isRidingHappyGhast) {
-            if (world.getTime() % 80 == 0) {
-                if (stack.getDamage() < stack.getMaxDamage()) {
-                    // Damage the item
-                    stack.damage(1, player, slot);
+            HappyGhastEntity happyGhast = (HappyGhastEntity) player.getVehicle();
 
-                    // Only heal if the Happy Ghast is actually damaged
-                    net.minecraft.entity.passive.HappyGhastEntity happyGhast =
-                            (net.minecraft.entity.passive.HappyGhastEntity) player.getVehicle();
+            boolean isMoving = player.forwardSpeed != 0 || player.sidewaysSpeed != 0 || player.isJumping();
+
+            if (isMoving) {
+                // Consume durability only when player is actively moving the Happy Ghast
+                if (world.getTime() % 80 == 0 && stack.getDamage() < stack.getMaxDamage()) {
+                    stack.damage(1, player, slot);
 
                     if (happyGhast.getHealth() < happyGhast.getMaxHealth()) {
                         happyGhast.heal(1.0f);
-
-                        if (world.getRandom().nextFloat() < 0.3f) { // 30% chance for particles
-                            world.spawnParticles(
-                                    net.minecraft.particle.ParticleTypes.HAPPY_VILLAGER,
-                                    happyGhast.getX(),
-                                    happyGhast.getY() + 1.5,
-                                    happyGhast.getZ(),
-                                    1,
-                                    0.3, 0.3, 0.3,
-                                    0.05
-                            );
-                        }
                     }
                 }
             }
