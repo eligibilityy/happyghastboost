@@ -54,6 +54,6 @@ public class HappyGhastEntityMixin implements ItemSteerable, Boostable {
     @Override
     @Unique
     public float happyghastboost$getMovementSpeedMultiplier() {
-        return this.happyghastboost$isBoosted ? 3.0F : 1.0F;
+        return this.happyghastboost$isBoosted ? 2.0F : 1.0F;
     }
 }
