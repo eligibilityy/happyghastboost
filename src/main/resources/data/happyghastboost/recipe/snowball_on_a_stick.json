@@ -2,13 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
-    "  F",
-    " S ",
-    "S  "
+    "ABC",
+    "DEF",
+    "GHI"
   ],
   "key": {
-    "S": "minecraft:stick",
-    "F": "minecraft:snowball"
+    "A": {"item": "minecraft:fishing_rod"},
+    "B": {"item": "minecraft:snowball"},
+    "C": {"item": "minecraft:fishing_rod"},
+    "D": {"item": "minecraft:snowball"},
+    "E": {"item": "minecraft:fishing_rod"},
+    "F": {"item": "minecraft:snowball"},
+    "G": {"item": "minecraft:fishing_rod"},
+    "H": {"item": "minecraft:snowball"},
+    "I": {"item": "minecraft:fishing_rod"}
   },
   "result": {
     "id": "happyghastboost:snowball_on_a_stick",
