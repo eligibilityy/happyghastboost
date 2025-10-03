@@ -22,19 +22,14 @@ public class SnowballOnAStickItem extends Item {
         boolean isRidingHappyGhast = player.hasVehicle() && player.getVehicle() instanceof HappyGhastEntity;
 
         if (isInHand && isRidingHappyGhast) {
-            HappyGhastEntity happyGhast = (HappyGhastEntity) player.getVehicle();
+            // HappyGhastEntity happyGhast = (HappyGhastEntity) player.getVehicle();
 
-            boolean isMoving = player.forwardSpeed != 0 || player.sidewaysSpeed != 0 || player.isJumping();
+            if (world.getTime() % 80 == 0 && stack.getDamage() < stack.getMaxDamage()) {
+                stack.damage(1, player, slot);
 
-            if (isMoving) {
-                // Consume durability only when player is actively moving the Happy Ghast
-                if (world.getTime() % 80 == 0 && stack.getDamage() < stack.getMaxDamage()) {
-                    stack.damage(1, player, slot);
-
-                    if (happyGhast.getHealth() < happyGhast.getMaxHealth()) {
-                        happyGhast.heal(1.0f);
-                    }
-                }
+//                if (happyGhast.getHealth() < happyGhast.getMaxHealth()) {
+//                    happyGhast.heal(1.0f);
+//                }
             }
         }
     }
